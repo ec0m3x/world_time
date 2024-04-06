@@ -5,7 +5,6 @@ import 'package:world_time/pages/home.dart';
 import 'package:world_time/pages/loading.dart';
 import 'package:world_time/pages/choose_location.dart';
 import 'package:world_time/pages/profile.dart';
-import 'package:world_time/navigationbar.dart';
 
 void main() {
   runApp(GetMaterialApp(
