@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:world_time/services/world_time.dart';
+import 'package:get/get.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({super.key});
@@ -28,7 +28,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime instance = locations[index];
     await instance.getTime();
     // navigate to home screen
-    Navigator.pop(context, {
+      Get.back(result: {
       'location': instance.location,
       'flag': instance.flag,
       'time': instance.time,
@@ -39,19 +39,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        backgroundColor: Colors.blue.shade900,
-        foregroundColor: Colors.white,
-        title: const Text(
-          'Choose a Location',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-        centerTitle: true,
-        elevation: 0,
-      ),
+      backgroundColor: Colors.black,
     body: ListView.builder(
       itemCount: locations.length,
       itemBuilder: (context, index) {

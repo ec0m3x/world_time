@@ -1,17 +1,21 @@
 
 import 'package:flutter/material.dart';
-import 'package:world_time/view/home.dart';
-import 'package:world_time/view/loading.dart';
-import 'package:world_time/view/choose_location.dart';
+import 'package:get/route_manager.dart';
+import 'package:world_time/pages/home.dart';
+import 'package:world_time/pages/loading.dart';
+import 'package:world_time/pages/choose_location.dart';
+import 'package:world_time/pages/profile.dart';
+import 'package:world_time/navigationbar.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(GetMaterialApp(
     initialRoute: '/',
-    routes: {
-      '/': (context) => Loading(),
-      '/home': (context) => Home(),
-      '/location': (context) => ChooseLocation(),
-    },
+    getPages: [
+      GetPage(name: '/', page: () => const Loading()),
+      GetPage(name: '/home', page: () => const Home()),
+      GetPage(name: '/location', page: () => const ChooseLocation()),
+      GetPage(name: '/profile', page: () => const Profile())
+    ],
   ));
 }
 

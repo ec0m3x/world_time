@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/route_manager.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -9,16 +10,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   Map data = {};
 
   @override
   Widget build(BuildContext context) {
     data = data.isNotEmpty ? data : ModalRoute.of(context)!.settings.arguments as Map;
-    print(data);
+
     // set background
     String bgImage = data['isDaytime'] ? 'day.png' : 'night.png';
     Color? bgColor = data['isDaytime'] ? Colors.blue[900] : Colors.indigo[700];
+    
     return Scaffold(
       backgroundColor: bgColor,
       body: SafeArea(
@@ -35,9 +36,9 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.fromLTRB(0, 120.0, 0, 0),
             child: Column(
               children: <Widget>[
-                TextButton.icon(
+                ElevatedButton.icon(
                   onPressed: () async {
-                    dynamic result = await Navigator.pushNamed(context, '/location');
+                    dynamic result = await Get.toNamed('/location');
                     setState(() {
                       data = {
                         'time': result['time'],
@@ -47,14 +48,14 @@ class _HomeState extends State<Home> {
                       };
                     });
                   },
-                  icon:  Icon(
+                  icon: const Icon(
                     Icons.edit_location,
-                    color: Colors.grey.shade300,
+                    color: Colors.black,
                   ),
-                  label: Text(
+                  label: const Text(
                     'Edit Location',
                     style: TextStyle(
-                      color: Colors.grey.shade300,
+                      color: Colors.black,
                     ),
                   ),
                 ),
@@ -89,7 +90,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-      )
+      ),
     );
   }
 }
